@@ -1,0 +1,77 @@
+{
+	"name": "@brikcss/timer",
+	"version": "0.0.0-development",
+	"description": "Simple timer utility to start, stop, check duration, and clear a timer.",
+	"author": "BrikCSS <https://github.com/brikcss>",
+	"contributors": [
+		"The Zimmee <thezimmee@gmail.com>"
+	],
+	"homepage": "https://github.com/brikcss/timer",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/brikcss/timer.git"
+	},
+	"bugs": {
+		"url": "https://github.com/brikcss/timer/issues"
+	},
+	"keywords": [
+		"brikcss",
+		"timer"
+	],
+	"main": "./dist/lib/timer.js",
+	"module": "./dist/module/timer.js",
+	"browser": "./dist/browser/timer.js",
+	"umd": "./dist/umd/timer.js",
+	"directories": {
+		"lib": "./dist/lib"
+	},
+	"files": [
+		"./dist"
+	],
+	"publishConfig": {
+		"tag": "dev",
+		"access": "public"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "node ./node_modules/.bin/pre-commit-lint",
+			"commit-msg": "commitlint -e $GIT_PARAMS && . ./node_modules/.bin/commit-msg-stamp-branch ${GIT_PARAMS}",
+			"pre-push": ". ./node_modules/.bin/pre-push-check-stage && echo \"\n[ok] Pushing code...\""
+		}
+	},
+	"scripts": {
+		"preci": "npm run build",
+		"ci": "concurrently \"npm run test:lint\" \"npm run test:coverage\"",
+		"pretest": "npm run build",
+		"test": "concurrently \"npm run test:lint\" \"npm run test:unit\"",
+		"test:lint": "node ./node_modules/.bin/eslint ./src/timer.js && echo \"\n[ok] Linter complete.\n\"",
+		"test:unit": "node ./node_modules/.bin/mocha \"./test/*.spec.js\" --reporter=mocha-better-spec-reporter --colors",
+		"test:coverage": "nyc --reporter=lcov --reporter=text mocha \"./test/*.spec.js\" --recursive && concurrently \"cat coverage/lcov.info | codacy-coverage\" \"cat coverage/lcov.info | coveralls\"",
+		"prebuild": "rimraf dist",
+		"build": "rollup --config=.rolluprc.js",
+		"watch": "concurrently \"npm run build -- --watch\" \"watch test/timer.spec.js src/timer.js --exec='npm run test:unit'\"",
+		"semantic-release": "semantic-release"
+	},
+	"devDependencies": {
+		"@brikcss/git-hooks": "1.x",
+		"@brikcss/watcher-cli": "0.x",
+		"@commitlint/cli": "6.x",
+		"babel-core": "6.x",
+		"babel-plugin-external-helpers": "6.x",
+		"babel-preset-env": "1.x",
+		"codacy-coverage": "2.x",
+		"concurrently": "3.x",
+		"coveralls": "3.x",
+		"mocha": "5.x",
+		"mocha-better-spec-reporter": "3.x",
+		"nyc": "11.x",
+		"rimraf": "2.x",
+		"rollup": "0.x",
+		"rollup-plugin-babel": "3.x",
+		"rollup-plugin-commonjs": "9.x",
+		"rollup-plugin-node-resolve": "3.x",
+		"rollup-plugin-prettier": "0.x",
+		"rollup-plugin-uglify": "3.x",
+		"semantic-release": "15.x"
+	}
+}
