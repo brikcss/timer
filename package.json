@@ -26,7 +26,7 @@
 		"lib": "./dist/lib"
 	},
 	"files": [
-		"./dist"
+		"./dist/**/*"
 	],
 	"publishConfig": {
 		"tag": "dev",
