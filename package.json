@@ -22,12 +22,7 @@
 	"module": "./dist/module/timer.js",
 	"browser": "./dist/browser/timer.js",
 	"umd": "./dist/umd/timer.js",
-	"files": [
-		"./dist/lib/*.js",
-		"./dist/umd/*.js",
-		"./dist/module/*.js",
-		"./dist/browser/*.js"
-	],
+	"files": ["dist"],
 	"publishConfig": {
 		"tag": "dev",
 		"access": "public"
