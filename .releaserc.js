@@ -9,22 +9,21 @@ const config = {
 	// See https://github.com/semantic-release/github/
 	github: {
 		path: '@semantic-release/github',
-		assignees: ['thezimmee']
-		// assets: 'dist/**/*'
-		// assets: (() => {
-		// 	const assets = [];
-		// 	['lib', 'umd', 'browser', 'module'].forEach((type) => {
-		// 		assets.push({
-		// 			path: `dist/${type}/merge.js`,
-		// 			name: `${type}/merge.js`
-		// 		});
-		// 		assets.push({
-		// 			path: `dist/${type}/merge.min.js`,
-		// 			name: `${type}/merge.min.js`
-		// 		});
-		// 	});
-		// 	return assets;
-		// })()
+		assignees: ['thezimmee'],
+		assets: (() => {
+			const assets = [];
+			['lib', 'umd', 'browser', 'module'].forEach((type) => {
+				assets.push({
+					path: `dist/${type}/timer.js`,
+					name: `timer-${type}.js`
+				});
+				assets.push({
+					path: `dist/${type}/timer.min.js`,
+					name: `timer-${type}.min.js`
+				});
+			});
+			return assets;
+		})()
 	},
 	// See https://github.com/semantic-release/npm.
 	npm: '@semantic-release/npm'
