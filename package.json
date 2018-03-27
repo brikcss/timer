@@ -26,7 +26,10 @@
 		"lib": "./dist/lib"
 	},
 	"files": [
-		"./dist/**/*"
+		"./dist/lib",
+		"./dist/umd",
+		"./dist/module",
+		"./dist/browser"
 	],
 	"publishConfig": {
 		"tag": "dev",
