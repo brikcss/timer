@@ -1,5 +1,7 @@
 # Timer
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/brikcss/timer.svg)](https://greenkeeper.io/)
+
 > Simple timer utility to start, stop, check duration, and clear a timer. Works in Node, JS/UMD modules, or the browser.
 
 <!-- Shields. -->
